@@ -60,4 +60,38 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/add_student_student_id_text_view"
         app:layout_constraintEnd_toEndOf="@+id/add_student_student_name_edit_text"
         app:layout_constraintStart_toEndOf="@+id/add_student_student_id_text_view" />
+
+    <Button
+        android:id="@+id/add_student_save_student_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="36dp"
+        android:text="Save Student"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_student_cancel_button"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/add_student_cancel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="Cancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/add_student_save_student_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/add_student_save_student_button" />
+
+    <TextView
+        android:id="@+id/add_student_save_status_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_student_save_student_button"
+        app:layout_constraintEnd_toEndOf="@+id/add_student_cancel_button"
+        app:layout_constraintStart_toStartOf="@+id/add_student_save_student_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
