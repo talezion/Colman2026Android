@@ -1,0 +1,37 @@
+package com.idz.colman2026class2
+
+import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
+import com.idz.colman2026class2.databinding.StudentRowLayoutBinding
+import com.idz.colman2026class2.models.Student
+import com.squareup.picasso.Picasso
+
+class StudentRowViewHolder(
+    private val binding: StudentRowLayoutBinding
+): RecyclerView.ViewHolder(binding.root) {
+
+    private var student: Student? = null
+
+    init {
+        binding.checkbox.setOnClickListener { view ->
+            (view?.tag as? Int)?.let { tag ->
+                student?.isPresent = binding.checkbox.isChecked
+            }
+        }
+    }
+
+    fun bind(student: Student, position: Int) {
+        this.student = student
+        binding.nameTextView.text = student.name
+        binding.idTextView.text = student.id
+        binding.checkbox.apply {
+            isChecked = student.isPresent
+            tag = position
+        }
+        Log.v("TAG", "Loading image from URL: ${student.avatarUrlString}")
+        Picasso
+            .get()
+            .load(student.avatarUrlString)
+            .into(binding.imageView)
+    }
+}
