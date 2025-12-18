@@ -7,7 +7,8 @@ import com.idz.colman2026class2.models.Student
 import com.squareup.picasso.Picasso
 
 class StudentRowViewHolder(
-    private val binding: StudentRowLayoutBinding
+    private val binding: StudentRowLayoutBinding,
+    private val listener: OnItemClickListener?
 ): RecyclerView.ViewHolder(binding.root) {
 
     private var student: Student? = null
@@ -16,6 +17,13 @@ class StudentRowViewHolder(
         binding.checkbox.setOnClickListener { view ->
             (view?.tag as? Int)?.let { tag ->
                 student?.isPresent = binding.checkbox.isChecked
+            }
+        }
+
+        itemView.setOnClickListener {
+            listener?.onItemClick(absoluteAdapterPosition)
+            student?.let { student ->
+                listener?.onStudentItemClick(student)
             }
         }
     }

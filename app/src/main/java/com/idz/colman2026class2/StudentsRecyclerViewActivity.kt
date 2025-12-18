@@ -2,6 +2,7 @@ package com.idz.colman2026class2
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.idz.colman2026class2.databinding.ActivityStudentsRecyclerViewBinding
 import com.idz.colman2026class2.models.Model
+import com.idz.colman2026class2.models.Student
 
 class StudentsRecyclerViewActivity : AppCompatActivity() {
 
@@ -33,6 +35,24 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         binding?.recyclerView?.setHasFixedSize(true)
 
         val adapter = StudentsAdapter(Model.shared.students)
+        adapter.listener = object : OnItemClickListener {
+            override fun onItemClick(position: Int) {
+                val student = Model.shared.students[position]
+                presentToastFor(student)
+            }
+
+            override fun onStudentItemClick(student: Student) {
+                presentToastFor(student)
+            }
+        }
         binding?.recyclerView?.adapter = adapter
+    }
+
+    private fun presentToastFor(student: Student) {
+        val presentStatus = if (student.isPresent) "present" else "absent"
+        Toast.makeText(this,
+            "${student.name} is $presentStatus",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
