@@ -7,59 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mainNavHost"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonOne"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </FrameLayout>
-
-    <Button
-        android:id="@+id/buttonOne"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tag="1"
-        android:text="One"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonTwo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonTwo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tag="2"
-        android:text="Two"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonOne"
-        app:layout_constraintEnd_toStartOf="@+id/buttonThree"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonOne" />
-
-    <Button
-        android:id="@+id/buttonThree"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tag="3"
-        android:text="Three"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonTwo"
-        app:layout_constraintEnd_toStartOf="@+id/buttonFour"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonTwo" />
-
-    <Button
-        android:id="@+id/buttonFour"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:tag="4"
-        android:text="Four"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonThree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonThree" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

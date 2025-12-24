@@ -36,11 +36,6 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
 
         val adapter = StudentsAdapter(Model.shared.students)
         adapter.listener = object : OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                val student = Model.shared.students[position]
-                presentToastFor(student)
-            }
-
             override fun onStudentItemClick(student: Student) {
                 presentToastFor(student)
             }

@@ -9,7 +9,6 @@ import com.idz.colman2026class2.databinding.StudentRowLayoutBinding
 import com.idz.colman2026class2.models.Student
 
 interface OnItemClickListener {
-    fun onItemClick(position: Int)
     fun onStudentItemClick(student: Student)
 }
 

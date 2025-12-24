@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.Navigation
 import com.idz.colman2026class2.databinding.FragmentBlueBinding
 
 class BlueFragment : Fragment() {
@@ -29,6 +30,10 @@ class BlueFragment : Fragment() {
         binding = FragmentBlueBinding.inflate(inflater, container, false)
         textView = binding?.textView
         textView?.text = title ?: "Oops! What just happened? 😲"
+
+        binding?.backButton?.setOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+        }
         return binding?.root
     }
 

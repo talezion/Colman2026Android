@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idz.colman2026class2.databinding.FragmentStudentsListBinding
 import com.idz.colman2026class2.models.Model
@@ -21,6 +22,9 @@ class StudentsListFragment : Fragment() {
     ): View? {
         binding = FragmentStudentsListBinding.inflate(layoutInflater, container, false)
         setupRecyclerView()
+
+        binding?.addStudentButton?.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_global_addStudentFragment))
+
         return binding?.root
     }
 
@@ -31,34 +35,18 @@ class StudentsListFragment : Fragment() {
 
         val adapter = StudentsAdapter(Model.shared.students)
         adapter.listener = object : OnItemClickListener {
-            override fun onItemClick(position: Int) {
-                val student = Model.shared.students[position]
-                presentToastFor(student)
-            }
 
             override fun onStudentItemClick(student: Student) {
-                presentToastFor(student)
+                navigateToPinkFragment(student)
             }
         }
         binding?.recyclerView?.adapter = adapter
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            StudentsListFragment().apply {
-                arguments = Bundle().apply {
-
-                }
-            }
-    }
-
-    private fun presentToastFor(student: Student) {
-        val presentStatus = if (student.isPresent) "present" else "absent"
-
-        Toast.makeText(context,
-            "${student.name} is $presentStatus",
-            Toast.LENGTH_SHORT
-        ).show()
+    private fun navigateToPinkFragment(student: Student) {
+        view?.let {
+            val action = StudentsListFragmentDirections.actionStudentsListFragmentToBlueFragment(student.name)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }

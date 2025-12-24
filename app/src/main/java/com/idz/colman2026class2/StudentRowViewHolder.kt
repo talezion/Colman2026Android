@@ -21,7 +21,6 @@ class StudentRowViewHolder(
         }
 
         itemView.setOnClickListener {
-            listener?.onItemClick(absoluteAdapterPosition)
             student?.let { student ->
                 listener?.onStudentItemClick(student)
             }
