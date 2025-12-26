@@ -3,6 +3,7 @@ package com.idz.colman2026class2
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -10,6 +11,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.Navigation
 import com.idz.colman2026class2.databinding.FragmentAddStudentBinding
+import kotlin.text.clear
 
 class AddStudentFragment : Fragment() {
 

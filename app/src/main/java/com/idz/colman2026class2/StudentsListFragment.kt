@@ -22,9 +22,6 @@ class StudentsListFragment : Fragment() {
     ): View? {
         binding = FragmentStudentsListBinding.inflate(layoutInflater, container, false)
         setupRecyclerView()
-
-        binding?.addStudentButton?.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_global_addStudentFragment))
-
         return binding?.root
     }
 

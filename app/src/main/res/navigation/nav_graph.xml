@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/studentsListFragment"
         android:name="com.idz.colman2026class2.StudentsListFragment"
-        android:label="fragment_students_list"
-        tools:layout="@layout/fragment_students_list" >
+        android:label="Students List"
+        tools:layout="@layout/fragment_students_list">
         <action
             android:id="@+id/action_studentsListFragment_to_blueFragment"
             app:destination="@id/blueFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/addStudentFragment"
         android:name="com.idz.colman2026class2.AddStudentFragment"
-        android:label="fragment_add_student"
+        android:label="Add Student"
         tools:layout="@layout/fragment_add_student" />
     <fragment
         android:id="@+id/blueFragment"
