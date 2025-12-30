@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -23,7 +24,13 @@ class AddStudentFragment : Fragment() {
     ): View? {
         binding = FragmentAddStudentBinding.inflate(layoutInflater, container, false)
         setupView()
+        setHasOptionsMenu(true)
         return binding?.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
     }
 
     private fun setupView() {
