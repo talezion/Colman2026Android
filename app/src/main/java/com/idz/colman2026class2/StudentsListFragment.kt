@@ -30,8 +30,10 @@ class StudentsListFragment : Fragment() {
         binding?.recyclerView?.layoutManager = layout
         binding?.recyclerView?.setHasFixedSize(true)
 
+        binding?.progressBar?.visibility = View.VISIBLE
         Model.shared.getAllStudents { students ->
 
+            binding?.progressBar?.visibility = View.GONE
             val adapter = StudentsAdapter(students)
             adapter.listener = object : OnItemClickListener {
 

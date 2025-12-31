@@ -11,7 +11,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.idz.colman2026class2.databinding.FragmentAddStudentBinding
+import com.idz.colman2026class2.models.Model
+import com.idz.colman2026class2.models.Student
 import kotlin.text.clear
 
 class AddStudentFragment : Fragment() {
@@ -34,17 +37,35 @@ class AddStudentFragment : Fragment() {
     }
 
     private fun setupView() {
+
+        binding?.loadingIndicator?.visibility = View.GONE
+
         binding?.cancelButton?.setOnClickListener {
-            Navigation.findNavController(it).popBackStack()
+            dismiss()
         }
 
         binding?.saveStudentButton?.setOnClickListener {
+
+            binding?.loadingIndicator?.visibility = View.VISIBLE
+
             val studentName: String = binding?.nameEditText?.text.toString()
             val studentId: String = binding?.idEditText?.text.toString()
 
-            binding?.statusTextView?.text = "Student Saved: Name = $studentName, ID = $studentId"
-            binding?.nameEditText?.text?.clear()
-            binding?.idEditText?.text?.clear()
+            val student = Student(
+                name = studentName,
+                id = studentId,
+                isPresent = false,
+                avatarUrlString = null
+            )
+
+            Model.shared.addStudent(student) {
+                dismiss()
+            }
         }
+    }
+
+
+    private fun dismiss() {
+        view?.findNavController()?.popBackStack()
     }
 }

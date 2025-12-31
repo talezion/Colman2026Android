@@ -10,6 +10,6 @@ data class Student(
     val id: String,
 
     val name: String,
-    val avatarUrlString: String,
-    var isPresent: Boolean
+    var isPresent: Boolean,
+    val avatarUrlString: String?
 )
