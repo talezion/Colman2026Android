@@ -30,14 +30,18 @@ class StudentsListFragment : Fragment() {
         binding?.recyclerView?.layoutManager = layout
         binding?.recyclerView?.setHasFixedSize(true)
 
-        val adapter = StudentsAdapter(Model.shared.students)
-        adapter.listener = object : OnItemClickListener {
+        Model.shared.getAllStudents { students ->
 
-            override fun onStudentItemClick(student: Student) {
-                navigateToPinkFragment(student)
+            val adapter = StudentsAdapter(students)
+            adapter.listener = object : OnItemClickListener {
+
+                override fun onStudentItemClick(student: Student) {
+                    navigateToPinkFragment(student)
+                }
             }
+            binding?.recyclerView?.adapter = adapter
         }
-        binding?.recyclerView?.adapter = adapter
+
     }
 
     private fun navigateToPinkFragment(student: Student) {
