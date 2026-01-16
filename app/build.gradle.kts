@@ -49,7 +49,12 @@ dependencies {
 
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.storage)
     implementation(platform(libs.firebase.bom))
+
+    implementation(libs.cloudinary.android)
+    implementation(libs.cloudinary.android.download)
+    implementation(libs.cloudinary.android.preprocess)
 
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
