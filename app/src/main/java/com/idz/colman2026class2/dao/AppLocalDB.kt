@@ -1,7 +1,7 @@
 package com.idz.colman2026class2.dao
 
 import androidx.room.Room
-import com.idz.colman2026class2.MyApplication
+import com.idz.colman2026class2.base.MyApplication
 
 object AppLocalDB {
 

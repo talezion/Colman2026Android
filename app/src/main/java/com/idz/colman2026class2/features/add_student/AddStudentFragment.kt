@@ -1,28 +1,21 @@
-package com.idz.colman2026class2
+package com.idz.colman2026class2.features.add_student
 
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.navigation.Navigation
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.idz.colman2026class2.databinding.FragmentAddStudentBinding
-import com.idz.colman2026class2.models.Model
+import com.idz.colman2026class2.models.StudentsRepository
 import com.idz.colman2026class2.models.StorageModel
 import com.idz.colman2026class2.models.Student
 import com.idz.colman2026class2.utilis.extensions.bitmap
-import kotlin.text.clear
 
 class AddStudentFragment : Fragment() {
 
@@ -73,10 +66,11 @@ class AddStudentFragment : Fragment() {
             val studentId: String = binding?.idEditText?.text.toString()
 
             val student = Student(
-                name = studentName,
                 id = studentId,
+                name = studentName,
                 isPresent = false,
-                avatarUrlString = null
+                avatarUrlString = null,
+                lastUpdated = null
             )
 
             binding?.avatarImageView?.isDrawingCacheEnabled = true
@@ -84,7 +78,7 @@ class AddStudentFragment : Fragment() {
             val bitmap = binding?.avatarImageView?.bitmap
 
             bitmap?.let {
-                Model.shared.addStudent(
+                StudentsRepository.Companion.shared.addStudent(
                     storageAPI = StorageModel.StorageAPI.CLOUDINARY,
                     profileImage = it,
                     student = student

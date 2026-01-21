@@ -6,7 +6,7 @@ import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.policy.GlobalUploadPolicy
 import com.cloudinary.android.policy.UploadPolicy
-import com.idz.colman2026class2.MyApplication
+import com.idz.colman2026class2.base.MyApplication
 import com.idz.colman2026class2.base.StringCompletion
 import java.io.File
 

@@ -1,10 +1,9 @@
-package com.idz.colman2026class2
+package com.idz.colman2026class2.features.students_lists
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.CheckBox
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.idz.colman2026class2.features.students_lists.StudentRowViewHolder
 import com.idz.colman2026class2.databinding.StudentRowLayoutBinding
 import com.idz.colman2026class2.models.Student
 
@@ -13,11 +12,11 @@ interface OnItemClickListener {
 }
 
 class StudentsAdapter(
-    private var students: List<Student>,
+    var students: MutableList<Student>?,
 ): RecyclerView.Adapter<StudentRowViewHolder>() {
 
     var listener: OnItemClickListener? = null
-    override fun getItemCount(): Int = students.size
+    override fun getItemCount(): Int = students?.size ?: 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentRowViewHolder {
         val inflator = LayoutInflater.from(parent.context)
@@ -29,6 +28,8 @@ class StudentsAdapter(
     }
 
     override fun onBindViewHolder(holder: StudentRowViewHolder, position: Int) {
-        holder.bind(students[position], position)
+        students?.let {
+            holder.bind(it[position], position)
+        }
     }
 }

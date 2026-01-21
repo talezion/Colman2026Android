@@ -1,19 +1,16 @@
-package com.idz.colman2026class2
+package com.idz.colman2026class2.base
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.idz.colman2026class2.R
 import com.idz.colman2026class2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.idz.colman2026class2
+package com.idz.colman2026class2.features.students_lists
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView

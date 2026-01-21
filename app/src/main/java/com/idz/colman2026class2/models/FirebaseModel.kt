@@ -1,7 +1,7 @@
 package com.idz.colman2026class2.models
 
-import android.util.Log
 import com.google.firebase.Firebase
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.firestore
 import com.idz.colman2026class2.base.Completion
 import com.idz.colman2026class2.base.StudentCompletion
@@ -15,8 +15,10 @@ class FirebaseModel {
         const val STUDENTS = "students"
     }
 
-    fun getAllStudents(completion: StudentsCompletion) {
-        db.collection(STUDENTS).get()
+    fun getAllStudents(since: Long, completion: StudentsCompletion) {
+        db.collection(STUDENTS)
+            .whereGreaterThanOrEqualTo(Student.LAST_UPDATED_KEY, Timestamp(since / 1000, 0))
+            .get()
             .addOnCompleteListener { result ->
                 when (result.isSuccessful) {
                     true -> completion(result.result.map { Student.fromJson(it.data) })
