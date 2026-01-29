@@ -1,10 +1,11 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.models
 
 import android.graphics.Bitmap
 import com.google.firebase.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.storage
 import com.idz.colman2026class2.base.StringCompletion
+import com.idz.colman2026class2.model.Student
 import java.io.ByteArrayOutputStream
 
 class FirebaseStorageModel {

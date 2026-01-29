@@ -1,14 +1,17 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.models
 
 import android.content.Context
 import android.graphics.Bitmap
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
+import com.cloudinary.android.callback.UploadCallback
 import com.cloudinary.android.policy.GlobalUploadPolicy
 import com.cloudinary.android.policy.UploadPolicy
 import com.idz.colman2026class2.base.MyApplication
 import com.idz.colman2026class2.base.StringCompletion
+import com.idz.colman2026class2.model.Student
 import java.io.File
+import kotlin.collections.get
 
 class CloudinaryStorageModel {
 
@@ -35,7 +38,7 @@ class CloudinaryStorageModel {
 
         MediaManager.get().upload(file.path)
             .option("images", "students/${student.id}/profile_image")
-            .callback(object : com.cloudinary.android.callback.UploadCallback {
+            .callback(object : UploadCallback {
                 override fun onStart(requestId: String) {
                     // Upload started
                 }
@@ -53,7 +56,7 @@ class CloudinaryStorageModel {
                     completion(null)
                 }
 
-                override fun onReschedule(requestId: String, error: com.cloudinary.android.callback.ErrorInfo) {
+                override fun onReschedule(requestId: String, error: ErrorInfo) {
                     // Upload rescheduled
                 }
             })

@@ -1,4 +1,4 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.models
 
 import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
@@ -6,6 +6,7 @@ import com.google.firebase.firestore.firestore
 import com.idz.colman2026class2.base.Completion
 import com.idz.colman2026class2.base.StudentCompletion
 import com.idz.colman2026class2.base.StudentsCompletion
+import com.idz.colman2026class2.model.Student
 
 class FirebaseModel {
 

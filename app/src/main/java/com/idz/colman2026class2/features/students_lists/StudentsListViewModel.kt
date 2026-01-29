@@ -1,9 +1,16 @@
 package com.idz.colman2026class2.features.students_lists
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.idz.colman2026class2.models.Student
-import com.idz.colman2026class2.models.StudentsRepository
+import androidx.lifecycle.viewModelScope
+import com.idz.colman2026class2.data.repository.movies.RemoteMoviesRepository
+import com.idz.colman2026class2.model.Student
+import com.idz.colman2026class2.data.repository.students.StudentsRepository
+import com.idz.colman2026class2.model.Movies
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class StudentsListViewModel: ViewModel() {
 
@@ -11,5 +18,16 @@ class StudentsListViewModel: ViewModel() {
 
     fun refreshStudents() {
         StudentsRepository.shared.refreshStudents()
+    }
+
+    fun getMovies(callback: (Movies) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val movies = RemoteMoviesRepository.shared.getTopRatedMovies()
+            Log.i("TAG", "Movies: ${movies.results?.size}")
+
+            withContext(Dispatchers.Main) {
+                callback(movies)
+            }
+        }
     }
 }

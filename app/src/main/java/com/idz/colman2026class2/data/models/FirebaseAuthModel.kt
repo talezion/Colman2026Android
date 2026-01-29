@@ -1,4 +1,4 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.models
 
 import android.util.Log
 import com.google.firebase.Firebase

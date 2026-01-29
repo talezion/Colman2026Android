@@ -1,4 +1,4 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.model
 
 import android.content.Context
 import androidx.room.Entity
@@ -23,12 +23,12 @@ data class Student(
 
         var lastUpdated: Long
             get() {
-                return MyApplication.appContext
+                return MyApplication.Globals.appContext
                     ?.getSharedPreferences("TAG", Context.MODE_PRIVATE)
                     ?.getLong(LAST_UPDATED_KEY, 0) ?: 0
             }
             set(value) {
-                MyApplication.appContext
+                MyApplication.Globals.appContext
                     ?.getSharedPreferences("TAG", Context.MODE_PRIVATE)
                     ?.edit()
                     ?.putLong(LAST_UPDATED_KEY, value)

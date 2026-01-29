@@ -12,9 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.idz.colman2026class2.databinding.FragmentAddStudentBinding
-import com.idz.colman2026class2.models.StudentsRepository
-import com.idz.colman2026class2.models.StorageModel
-import com.idz.colman2026class2.models.Student
+import com.idz.colman2026class2.data.repository.students.StudentsRepository
+import com.idz.colman2026class2.data.models.StorageModel
+import com.idz.colman2026class2.model.Student
 import com.idz.colman2026class2.utilis.extensions.bitmap
 
 class AddStudentFragment : Fragment() {

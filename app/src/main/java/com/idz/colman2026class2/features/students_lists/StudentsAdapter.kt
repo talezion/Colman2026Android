@@ -3,9 +3,8 @@ package com.idz.colman2026class2.features.students_lists
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.idz.colman2026class2.features.students_lists.StudentRowViewHolder
 import com.idz.colman2026class2.databinding.StudentRowLayoutBinding
-import com.idz.colman2026class2.models.Student
+import com.idz.colman2026class2.model.Student
 
 interface OnItemClickListener {
     fun onStudentItemClick(student: Student)

@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.idz.colman2026class2.models.Student
+import com.idz.colman2026class2.model.Student
 
 @Dao
 interface StudentDao {

@@ -3,7 +3,7 @@ package com.idz.colman2026class2.features.students_lists
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.idz.colman2026class2.databinding.StudentRowLayoutBinding
-import com.idz.colman2026class2.models.Student
+import com.idz.colman2026class2.model.Student
 import com.squareup.picasso.Picasso
 
 class StudentRowViewHolder(

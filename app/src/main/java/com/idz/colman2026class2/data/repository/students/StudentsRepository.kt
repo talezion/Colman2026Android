@@ -1,4 +1,4 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.repository.students
 
 import android.graphics.Bitmap
 import android.os.Handler
@@ -6,9 +6,12 @@ import android.os.Looper
 import androidx.lifecycle.LiveData
 import com.idz.colman2026class2.base.Completion
 import com.idz.colman2026class2.base.StudentCompletion
-import com.idz.colman2026class2.base.StudentsCompletion
 import com.idz.colman2026class2.dao.AppLocalDB
 import com.idz.colman2026class2.dao.AppLocalDbRepository
+import com.idz.colman2026class2.data.models.FirebaseAuthModel
+import com.idz.colman2026class2.data.models.FirebaseModel
+import com.idz.colman2026class2.data.models.StorageModel
+import com.idz.colman2026class2.model.Student
 import java.util.concurrent.Executors
 
 class StudentsRepository private constructor() {
@@ -32,7 +35,7 @@ class StudentsRepository private constructor() {
     }
 
     fun refreshStudents() {
-        val lastUpdated = Student.lastUpdated
+        val lastUpdated = Student.Companion.lastUpdated
 
         firebaseModel.getAllStudents(lastUpdated) {
             executor.execute {
@@ -44,14 +47,14 @@ class StudentsRepository private constructor() {
                             time = studentLastUpdated
                         }
                     }
-                    Student.lastUpdated = time
+                    Student.Companion.lastUpdated = time
                 }
             }
 
         }
     }
 
-    fun addStudent(storageAPI: StorageModel.StorageAPI, profileImage: Bitmap ,student: Student, completion: Completion) {
+    fun addStudent(storageAPI: StorageModel.StorageAPI, profileImage: Bitmap, student: Student, completion: Completion) {
         firebaseModel.addStudent(student) {
             storageModel.uploadStudentImage(storageAPI, profileImage, student) {
                 imageUri ->
@@ -73,4 +76,3 @@ class StudentsRepository private constructor() {
         firebaseModel.getStudentById(id, completion)
     }
 }
-

@@ -9,8 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.idz.colman2026class2.databinding.FragmentStudentsListBinding
-import com.idz.colman2026class2.models.StudentsRepository
-import com.idz.colman2026class2.models.Student
+import com.idz.colman2026class2.model.Student
 
 class StudentsListFragment : Fragment() {
 
@@ -58,8 +57,30 @@ class StudentsListFragment : Fragment() {
     }
 
     private fun observeStudents() {
+        fetchMovies()
+
+        return
         viewModel.data.observe(viewLifecycleOwner) {
             adapter?.students = it
+            adapter?.notifyDataSetChanged()
+//            binding?.progressBar?.visibility = View.GONE
+            binding?.swipeRefresh?.isRefreshing = false
+        }
+    }
+
+    private fun fetchMovies() {
+        viewModel.getMovies { movies ->
+
+            adapter?.students = movies.results?.map { movie ->
+                Student(
+                    id = movie.title.toString(),
+                    name = movie.title ?: "Unknown",
+                    isPresent = false,
+                    avatarUrlString = "https://image.tmdb.org/t/p/w500${movie.poster_path}",
+                    lastUpdated = System.currentTimeMillis()
+                )
+            }?.toMutableList()
+
             adapter?.notifyDataSetChanged()
 //            binding?.progressBar?.visibility = View.GONE
             binding?.swipeRefresh?.isRefreshing = false

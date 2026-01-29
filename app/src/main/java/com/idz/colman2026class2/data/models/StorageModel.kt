@@ -1,7 +1,8 @@
-package com.idz.colman2026class2.models
+package com.idz.colman2026class2.data.models
 
 import android.graphics.Bitmap
 import com.idz.colman2026class2.base.StringCompletion
+import com.idz.colman2026class2.model.Student
 
 
 class StorageModel {
